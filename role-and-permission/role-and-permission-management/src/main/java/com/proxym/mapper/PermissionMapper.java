@@ -11,12 +11,6 @@ public class PermissionMapper extends GenericMapper<Permission, PermissionDto>{
 
     @Override
     public PermissionDto mapToDto(Permission permission) {
-//        PermissionDto permissionDto = new PermissionDto();
-//        permissionDto.setCategory(permission.getCategory());
-//        permissionDto.setId(permission.getId());
-//        permissionDto.setName(permission.getName());
-//        permissionDto.setEnabled(permission.isEnabled());
-//        return permissionDto;
         return PermissionDto.builder()
                 .id(permission.getId())
                 .category(permission.getCategory())

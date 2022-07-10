@@ -1,11 +1,10 @@
 package com.proxym.controllers;
 
+import com.proxym.dto.EnabledPermissionDto;
 import com.proxym.dto.PermissionDto;
 import com.proxym.services.PermissionService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,16 +17,17 @@ public class Controller {
     }
 
     @PostMapping("/add")
-    PermissionDto addPermission(PermissionDto permissionDto) {
+    PermissionDto addPermission(@RequestBody PermissionDto permissionDto) {
         return permissionService.addPermission(permissionDto);
     }
     @PostMapping("/addAll")
-    List<PermissionDto> addAllPermission(List<PermissionDto> permissionDto) {
+    List<PermissionDto> addAllPermission(@RequestBody List<PermissionDto> permissionDto) {
         return permissionService.addAllPermission(permissionDto);
     }
 
     @GetMapping("/all")
     public List<PermissionDto> getAllPermission() {
+
         return permissionService.getAllPermission();
     }
     @PostMapping("/enable/{id}")
@@ -35,8 +35,13 @@ public class Controller {
         return permissionService.enablePermission(id);
 
     }
-    @PostMapping("/disable")
+    @PostMapping("/disable/{id}")
     public PermissionDto disablePermission(@PathVariable Long id) {
+
         return permissionService.disablePermission(id);
+    }
+    @GetMapping("/enabled/all")
+    public ResponseEntity<List<EnabledPermissionDto>> findEnabledPermissions (){
+        return ResponseEntity.ok(permissionService.findEnabled());
     }
 }

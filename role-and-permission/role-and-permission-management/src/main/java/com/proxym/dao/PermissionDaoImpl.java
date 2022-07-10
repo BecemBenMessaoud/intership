@@ -3,7 +3,6 @@ package com.proxym.dao;
 import com.proxym.entities.Permission;
 import com.proxym.repositories.PermissionRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +15,6 @@ public class PermissionDaoImpl implements PermissionDao{
         this.permissionRepository=permissionRepository;
 
     }
-
 
     @Override
     public Permission addPermission(Permission p) {
@@ -38,24 +36,21 @@ public class PermissionDaoImpl implements PermissionDao{
     @Override
     public Permission enablePermission(Long id) {
      Optional<Permission> permission = permissionRepository.findById(id);
-      if (permission.get().isEnabled())
-      { return permission.get() ;
+      if (permission.get().isEnabled()) {
+          return permission.get() ;
     }
         return null;
     }
-
     @Override
     public Permission disablePermission(Long id) {
         Optional<Permission> permission = permissionRepository.findById(id);
-
-        if (!(permission.get().isEnabled()))
-        { return permission.get() ;
+        if (!(permission.get().isEnabled())) {
+            return permission.get() ;
         }
         return null;
     }
-
     @Override
-    public List<Permission> findEnabledList(Permission permission) {
-       return null ;
+    public List<Permission> findEnabledList() {
+        return permissionRepository.findByEnabledIsTrue();
     }
 }

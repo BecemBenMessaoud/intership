@@ -12,8 +12,6 @@ public interface PermissionDao {
    List<Permission> addAllPermission(List<Permission> permission);
    Permission enablePermission(Long id);
    Permission disablePermission (Long id);
-   List<Permission> findEnabledList (Permission permission);
-
-
+   List<Permission> findEnabledList ();
   }
 

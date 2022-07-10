@@ -1,15 +1,14 @@
 package com.proxym.services;
 
 import com.proxym.dao.PermissionDao;
-import com.proxym.dto.EnabledPermission;
+import com.proxym.dto.EnabledPermissionDto;
 import com.proxym.dto.PermissionDto;
-import com.proxym.entities.Permission;
-import com.proxym.mapper.EnabledPermissionMapper;
 import com.proxym.mapper.PermissionMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -17,7 +16,6 @@ public class PermissionServiceImpl implements  PermissionService{
 
     private final PermissionDao permissionDao;
     private final PermissionMapper permissionMapper;
-    private final EnabledPermissionMapper enabledPermissionMapper;
 
     @Override
     public PermissionDto addPermission(PermissionDto permissionDto) {
@@ -36,7 +34,7 @@ public class PermissionServiceImpl implements  PermissionService{
 
     @Override
     public PermissionDto enablePermission(Long id) {
-        return enabledPermissionMapper.mapToDto(permissionDao.enablePermission(id));
+        return permissionMapper.mapToDto(permissionDao.enablePermission(id));
     }
 
     @Override
@@ -45,7 +43,15 @@ public class PermissionServiceImpl implements  PermissionService{
     }
 
     @Override
-    public List<EnabledPermission> findEnabledList(PermissionDto permissionDto) {
-       return null;
+    public List<EnabledPermissionDto> findEnabled() {
+        return permissionDao.findEnabledList().stream().map(permission ->
+             EnabledPermissionDto.builder()
+                     .id(permission.getId())
+                     .category(permission.getCategory())
+                     .name(permission.getName())
+                     .build()
+        ).collect(Collectors.toList());
     }
+
+
 }
