@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController("permission-management")
-public class Controller {
+@RequestMapping("permission-management")
+public class PermissionController {
     private final PermissionService permissionService;
 
-    public Controller(PermissionService permissionService) {
+    public PermissionController(PermissionService permissionService) {
         this.permissionService = permissionService;
     }
 

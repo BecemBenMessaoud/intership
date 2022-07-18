@@ -18,6 +18,7 @@ public class PermissionDaoImpl implements PermissionDao{
 
     @Override
     public Permission addPermission(Permission p) {
+
         return permissionRepository.save(p);
     }
 
@@ -30,6 +31,7 @@ public class PermissionDaoImpl implements PermissionDao{
 
     @Override
     public List<Permission> addAllPermission(List Permission) {
+
         return permissionRepository.saveAll(Permission);
     }
 
