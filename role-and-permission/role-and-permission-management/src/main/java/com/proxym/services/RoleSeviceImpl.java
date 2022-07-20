@@ -1,7 +1,7 @@
 package com.proxym.services;
 
 import com.proxym.dao.RoleDao;
-import com.proxym.dto.RoleDto;
+import com.proxym.role.permission.common.dto.RoleDto;
 import com.proxym.mapper.RoleMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

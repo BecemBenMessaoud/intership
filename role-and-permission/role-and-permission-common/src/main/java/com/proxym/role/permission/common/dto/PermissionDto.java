@@ -1,4 +1,4 @@
-package com.proxym.dto;
+package com.proxym.role.permission.common.dto;
 
 import lombok.*;
 
@@ -13,7 +13,5 @@ public  class PermissionDto {
         private String name;
         private String category;
         private boolean enabled;
-
-
-    }
+}
 

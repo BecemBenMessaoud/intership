@@ -1,6 +1,6 @@
 package com.proxym.mapper;
 
-import com.proxym.dto.PermissionDto;
+import com.proxym.role.permission.common.dto.PermissionDto;
 import com.proxym.entities.Permission;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

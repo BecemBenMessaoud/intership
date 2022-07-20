@@ -1,6 +1,6 @@
 package com.proxym.controllers;
 
-import com.proxym.dto.RoleDto;
+import com.proxym.role.permission.common.dto.RoleDto;
 import com.proxym.services.RoleService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.proxym.controllers;
 
-import com.proxym.dto.EnabledPermissionDto;
-import com.proxym.dto.PermissionDto;
+import com.proxym.role.permission.common.dto.EnabledPermissionDto;
+import com.proxym.role.permission.common.dto.PermissionDto;
 import com.proxym.services.PermissionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

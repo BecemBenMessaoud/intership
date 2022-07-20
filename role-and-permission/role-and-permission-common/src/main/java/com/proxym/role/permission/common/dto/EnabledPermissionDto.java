@@ -1,4 +1,4 @@
-package com.proxym.dto;
+package com.proxym.role.permission.common.dto;
 
 import lombok.*;
 @Getter

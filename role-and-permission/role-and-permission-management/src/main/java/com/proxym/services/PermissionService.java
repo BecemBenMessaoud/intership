@@ -1,8 +1,8 @@
 package com.proxym.services;
 
 
-import com.proxym.dto.EnabledPermissionDto;
-import com.proxym.dto.PermissionDto;
+import com.proxym.role.permission.common.dto.EnabledPermissionDto;
+import com.proxym.role.permission.common.dto.PermissionDto;
 
 import java.util.List;
 
@@ -13,5 +13,6 @@ public interface PermissionService {
     PermissionDto enablePermission(Long id);
     PermissionDto disablePermission(Long id);
     List<EnabledPermissionDto> findEnabled();
+    void deleteAllPermission (List<PermissionDto> permissionDtoList);
 
 }

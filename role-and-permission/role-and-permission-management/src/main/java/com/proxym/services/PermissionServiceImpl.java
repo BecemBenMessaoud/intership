@@ -1,8 +1,8 @@
 package com.proxym.services;
 
 import com.proxym.dao.PermissionDao;
-import com.proxym.dto.EnabledPermissionDto;
-import com.proxym.dto.PermissionDto;
+import com.proxym.role.permission.common.dto.EnabledPermissionDto;
+import com.proxym.role.permission.common.dto.PermissionDto;
 import com.proxym.mapper.PermissionMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -51,6 +51,11 @@ public class PermissionServiceImpl implements  PermissionService{
                      .name(permission.getName())
                      .build()
         ).collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteAllPermission(List<PermissionDto> permissionDtoList) {
+        permissionMapper.mapToDtoList(permissionDao.deleteAllPermission(permissionMapper.mapToEntityList(permissionDtoList)));
     }
 
 
