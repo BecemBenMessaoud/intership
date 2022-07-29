@@ -58,5 +58,10 @@ public class PermissionServiceImpl implements  PermissionService{
         permissionMapper.mapToDtoList(permissionDao.deleteAllPermission(permissionMapper.mapToEntityList(permissionDtoList)));
     }
 
+    @Override
+    public PermissionDto findByName(String name) {
+        return permissionMapper.mapToDto(permissionDao.findByName(name));
+    }
+
 
 }

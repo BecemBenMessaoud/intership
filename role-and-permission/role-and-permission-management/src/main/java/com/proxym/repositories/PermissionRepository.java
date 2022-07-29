@@ -8,6 +8,7 @@ import java.util.List;
 
 
 public interface PermissionRepository extends JpaRepository<Permission, Long> {
+    Permission findByName(String name);
     List<Permission> findByEnabledIsTrue();
 
 

@@ -14,5 +14,6 @@ public interface PermissionDao {
    Permission disablePermission (Long id);
    List<Permission> findEnabledList ();
    List<Permission> deleteAllPermission(List<Permission> permissionList);
+   Permission findByName(String name);
   }
 

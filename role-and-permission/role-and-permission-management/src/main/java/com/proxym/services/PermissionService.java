@@ -14,5 +14,6 @@ public interface PermissionService {
     PermissionDto disablePermission(Long id);
     List<EnabledPermissionDto> findEnabled();
     void deleteAllPermission (List<PermissionDto> permissionDtoList);
+    PermissionDto findByName(String name);
 
 }

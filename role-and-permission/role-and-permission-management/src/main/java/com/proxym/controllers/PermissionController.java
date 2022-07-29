@@ -1,5 +1,6 @@
 package com.proxym.controllers;
 
+import com.proxym.aop.CheckPermission;
 import com.proxym.role.permission.common.dto.EnabledPermissionDto;
 import com.proxym.role.permission.common.dto.PermissionDto;
 import com.proxym.services.PermissionService;
@@ -17,18 +18,9 @@ public class PermissionController {
         this.permissionService = permissionService;
     }
 
-    @PostMapping("/add")
-    PermissionDto addPermission(@RequestBody PermissionDto permissionDto) {
-        return permissionService.addPermission(permissionDto);
-    }
-    @PostMapping("/addAll")
-    List<PermissionDto> addAllPermission(@RequestBody List<PermissionDto> permissionDto) {
-        return permissionService.addAllPermission(permissionDto);
-    }
-
+    @CheckPermission(name="DISPLAY_PERMISSION")
     @GetMapping("/all")
     public List<PermissionDto> getAllPermission() {
-
         return permissionService.getAllPermission();
     }
     @PostMapping("/enable/{id}")

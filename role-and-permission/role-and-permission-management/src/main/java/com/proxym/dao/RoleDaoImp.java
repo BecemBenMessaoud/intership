@@ -1,19 +1,22 @@
 package com.proxym.dao;
 
 
+import com.proxym.entities.Permission;
 import com.proxym.entities.Role;
 import com.proxym.repositories.RoleRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Repository
+@RequiredArgsConstructor
 public class RoleDaoImp implements RoleDao {
     private final RoleRepository roleRepository;
-    public RoleDaoImp(RoleRepository roleRepository){
-        this.roleRepository=roleRepository;
-    }
+    private final PermissionDao permissionDao;
     @Override
     public Role addRole(Role role) {
         return roleRepository.save(role);

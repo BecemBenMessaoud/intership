@@ -7,7 +7,7 @@ public class DisplayPermission implements PermissionDefinition {
 
     @Override
     public PermissionDto create() {
-        return PermissionDto.builder().name("DISPLAY").category("PERMISSION_MANAGEMENT1").enabled(true).build();
+        return PermissionDto.builder().name("DISPLAY_PERMISSION").category("PERMISSION_MANAGEMENT1").enabled(true).build();
     }
 
 }

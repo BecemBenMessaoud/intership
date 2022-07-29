@@ -37,16 +37,17 @@ public class PermissionDaoImpl implements PermissionDao{
     @Override
     public Permission enablePermission(Long id) {
      Optional<Permission> permission = permissionRepository.findById(id);
-      if (permission.get().isEnabled()) {
-          return permission.get() ;
+      if (!permission.isPresent()) {
+          throw new RuntimeException("didn't exist permission");
     }
-        return null;
+        permission.get().setEnabled(true); ;
+        return permissionRepository.save(permission.get());
     }
     @Override
     public Permission disablePermission(Long id) {
         Optional<Permission> permission = permissionRepository.findById(id);
         if(!permission.isPresent()){
-            throw new RuntimeException();
+            throw new RuntimeException("didn't exist permission");
         }
         permission.get().setEnabled(false);
         return permissionRepository.save(permission.get());
@@ -60,5 +61,10 @@ public class PermissionDaoImpl implements PermissionDao{
     public List<Permission> deleteAllPermission(List<Permission> permissionList) {
         permissionRepository.deleteAll(permissionList);
         return permissionList;
+    }
+
+    @Override
+    public Permission findByName(String name) {
+        return permissionRepository.findByName(name);
     }
 }
